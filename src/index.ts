@@ -8,11 +8,25 @@ import { Scalar } from "@scalar/hono-api-reference";
 type Bindings = {
     // You can write your own bindings or env secret here.
 };
-const app = new Hono<{ Bindings: Bindings }>();
-app.use(requestId(), cors());
 
-app.route("/hello", helloRoute);
-app.get(
+let app = new Hono<{ Bindings: Bindings }>();
+app = app.use(
+    requestId(),
+    cors({
+        origin: (origin, ctx) => {
+            // All origins are allowed in this example
+            if (import.meta.env.DEV) return origin;
+            else
+                throw new Error(
+                    "CORS is too permissive for production. Please restrict the origin."
+                );
+        },
+        credentials: true,
+    })
+);
+
+app = app.route("/hello", helloRoute);
+app = app.get(
     "/openapi.json",
     openAPIRouteHandler(app, {
         includeEmptyPaths: true,
@@ -26,5 +40,5 @@ app.get(
         exclude: ["/openapi.json", "/docs"],
     })
 );
-app.get("/docs", Scalar({ url: "/openapi.json" }));
+app = app.get("/docs", Scalar({ url: "/openapi.json" }));
 export default app;

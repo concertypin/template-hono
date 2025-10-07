@@ -35,3 +35,8 @@ lerna-debug.log*
 
 # Dynamically generated
 worker-configuration.d.ts
+
+# Vite .env files
+.env.local
+.env.*.local
+!.env

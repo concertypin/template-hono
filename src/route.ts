@@ -1,16 +1,19 @@
 import { z } from "@hono/zod-openapi";
 import { Hono } from "hono";
 import { validator, resolver, describeRoute } from "hono-openapi";
-const route = new Hono();
+
+let route = new Hono();
 
 const inputSchema = z.object({
-    name: z.string().min(1).max(100).describe(" Name to be greeted"), // This description is optional, but useful for OpenAPI
+    // This description is optional, but useful for OpenAPI
+    // Write it if possible
+    name: z.string().min(1).max(100).describe(" Name to be greeted"),
 });
 const outputSchema = z.object({
     hello: z.string(),
 });
 
-route.post(
+route = route.post(
     "/",
     describeRoute({
         responses: {

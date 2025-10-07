@@ -8,6 +8,10 @@ export default defineConfig({
         cors: false, // https://hono.dev/docs/middleware/builtin/cors#using-with-vite
     },
     build: {
+        lib: {
+            entry: "src/index.ts",
+            formats: ["es"],
+        },
         sourcemap: true,
     },
     clearScreen: false,
