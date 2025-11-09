@@ -27,6 +27,12 @@ pnpm format
 pnpm build
 ```
 
+### Environment Variables
+
+To manage secrets and environment variables for local development, create a `.dev.vars` file in the root of the project. This file is ignored by git, so it is a safe place to store sensitive information.
+
+For more information, see the [Wrangler documentation](https://developers.cloudflare.com/workers/wrangler/commands/#dev).
+
 ## API Endpoints
 
 Check out `/docs`. Generated docs are at `/docs`.
