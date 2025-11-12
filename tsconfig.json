@@ -3,18 +3,23 @@
 	"compilerOptions": {
 		// File Layout
 		// "rootDir": "./src",
-		// "outDir": "./dist",
+		"outDir": "./dist",
 		// Environment Settings
 		// See also https://aka.ms/tsconfig/module
 		"module": "esnext",
 		"target": "esnext",
-		"types": ["vite/client"],
+		"types": [
+			"vite/client"
+		],
 		"moduleResolution": "Bundler",
-		"lib": ["ESNext"],
+		"lib": [
+			"ESNext"
+		],
 		// Other Outputs
 		"sourceMap": true,
 		"declaration": true,
 		"declarationMap": true,
+		"noEmit": true,
 		// Stricter Typechecking Options
 		"noUncheckedIndexedAccess": true,
 		"exactOptionalPropertyTypes": true,
@@ -30,7 +35,8 @@
 		"verbatimModuleSyntax": true,
 		"isolatedModules": true,
 		"noUncheckedSideEffectImports": true,
-		"moduleDetection": "force",
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"allowJs": true,
+		"checkJs": true
 	}
 }
